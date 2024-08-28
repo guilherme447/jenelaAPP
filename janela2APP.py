@@ -6,24 +6,38 @@
 
 
 
-
+# tem que importar essa biblioteca para fazer o grafico/ jenela
 import customtkinter as ctk
 
 def dobro_idade():
     if entry_idade.get () != "":   
         idade = int (entry_idade.get ())
-        end_calc.configure(text=f'Dobro da idade: {idade*2}')
 
 
+        # janela de saída
+        root2 = ctk.CTkToplevel()
+        root2.geometry('500x100+10+10')
+        root2.title('Calcula o dobro da idade')
+        root2.resizable(False,False)
+
+        # label de saida
+        end_calc = ctk.CTkLabel(root2,
+            text=(f'Dobro da idade: {idade*2}'),
+            font=('monospace', 20),
+            text_color='blue',
+        )
+        end_calc.pack(padx=10, pady=20)
 
 
 
 
 ctk.set_appearance_mode('Light')
 
+
+
 # JA TA criando o freme
 root = ctk.CTk()
-root.geometry('500x350+500+100')
+root.geometry('500x280+500+100')
 root.title('Calcula o dobro da idade')
 root.resizable(False,False)
 
@@ -43,7 +57,7 @@ entry_idade = ctk.CTkEntry(root,
     corner_radius=30,
 	placeholder_text_color=('black'),
 	text_color='#000000')
-entry_idade.pack(padx=10, pady=35)
+entry_idade.pack(padx=10, pady=20)
 
 # botao para enviar a conta
 btn_enviar =ctk.CTkButton (root,
@@ -56,16 +70,11 @@ btn_enviar =ctk.CTkButton (root,
     hover_color = '#0000CD',
     command= dobro_idade
 )
-btn_enviar.pack(padx=10, pady=30)
+btn_enviar.pack(padx=10, pady=20)
 
 
 # fazer um label para mostrar o resultado da conta
-end_calc = ctk.CTkLabel(root,
-    text='',
-    font=('monospace', 20),
-    text_color='blue',
-    )
-end_calc.pack(padx=10, pady=30)
+
 
 
 root.mainloop()
